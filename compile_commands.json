@@ -1,0 +1,40 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-I",
+      "include/",
+      "-c",
+      "-std=gnu99",
+      "-ffreestanding",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-o",
+      "build/kernel.o",
+      "src/kernel.c"
+    ],
+    "directory": "/home/voxi0/Desktop/MonoOS",
+    "file": "/home/voxi0/Desktop/MonoOS/src/kernel.c",
+    "output": "/home/voxi0/Desktop/MonoOS/build/kernel.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-I",
+      "include/",
+      "-c",
+      "-std=gnu99",
+      "-ffreestanding",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-o",
+      "build/video.o",
+      "src/drivers/video/video.c"
+    ],
+    "directory": "/home/voxi0/Desktop/MonoOS",
+    "file": "/home/voxi0/Desktop/MonoOS/src/drivers/video/video.c",
+    "output": "/home/voxi0/Desktop/MonoOS/build/video.o"
+  }
+]
