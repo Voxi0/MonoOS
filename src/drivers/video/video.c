@@ -2,7 +2,7 @@
 #include<stddef.h>
 
 // Limine
-#include<limine.h>
+#include<limine/limine.h>
 
 // SSFN
 #define SSFN_NOIMPLEMENTATION

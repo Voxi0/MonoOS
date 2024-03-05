@@ -4,7 +4,7 @@
 #include<stdbool.h>
 
 // Limine
-#include<limine.h>
+#include<limine/limine.h>
 
 // Custom Headers
 #include"drivers/video/video.h"
