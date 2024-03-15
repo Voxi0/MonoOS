@@ -18,7 +18,6 @@ build/${OS_NAME}.iso: limine.cfg build/isodir/boot/${OS_NAME}.bin
 # OS Binary File
 build/isodir/boot/${OS_NAME}.bin: build/kernel.o build/video.o build/3270.o linker.ld
 	@gcc -T linker.ld build/*.o -o build/isodir/boot/${OS_NAME}.bin -ffreestanding -O2 -nostdlib -lgcc
-	@rm build/*.o
 
 # Source Files
 # Kernel

@@ -44,11 +44,12 @@ void main(void) {
     struct limine_framebuffer* framebuffer = limineFbRequest.response->framebuffers[0];
 
     // Initialize Graphics
-    initGFX((uint32_t*)framebuffer->address, (uint64_t)framebuffer->width, (uint64_t)framebuffer->height, (uint64_t)framebuffer->pitch);
-    resetScreen(0xBAADC);
+    initGFX(framebuffer->address, framebuffer->width, framebuffer->height, framebuffer->pitch);
+    resetScreen(rgbToHex(0, 0, 0));
 
     // Draw A Circle
-    drawCircle(framebuffer->width / 2, framebuffer->height / 2, 80, rgbToHex(100, 200, 0));
+	printStr("Hello World!\n", rgbToHex(0, 255, 0));
+	printStr("I just printed a newline! Les goooo", rgbToHex(0, 255, 0));
 
     // Disable System Interrupts and Halt System
     hang();
