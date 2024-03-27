@@ -10,13 +10,15 @@
       "-O2",
       "-Wall",
       "-Wextra",
+      "-Werror",
+      "-fno-stack-protector",
       "-o",
       "build/kernel.o",
       "src/kernel.c"
     ],
-    "directory": "/home/voxi0/Downloads/MonoOS",
-    "file": "/home/voxi0/Downloads/MonoOS/src/kernel.c",
-    "output": "/home/voxi0/Downloads/MonoOS/build/kernel.o"
+    "directory": "/home/voxi0/Desktop/MonoOS",
+    "file": "/home/voxi0/Desktop/MonoOS/src/kernel.c",
+    "output": "/home/voxi0/Desktop/MonoOS/build/kernel.o"
   },
   {
     "arguments": [
@@ -29,12 +31,33 @@
       "-O2",
       "-Wall",
       "-Wextra",
+      "-Werror",
+      "-fno-stack-protector",
       "-o",
       "build/video.o",
-      "src/drivers/video/video.c"
+      "src/drivers/video.c"
     ],
-    "directory": "/home/voxi0/Downloads/MonoOS",
-    "file": "/home/voxi0/Downloads/MonoOS/src/drivers/video/video.c",
-    "output": "/home/voxi0/Downloads/MonoOS/build/video.o"
+    "directory": "/home/voxi0/Desktop/MonoOS",
+    "file": "/home/voxi0/Desktop/MonoOS/src/drivers/video.c",
+    "output": "/home/voxi0/Desktop/MonoOS/build/video.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-std=gnu99",
+      "-ffreestanding",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fno-stack-protector",
+      "-o",
+      "build/printf.o",
+      "3rdparty/tiny-printf/printf.c"
+    ],
+    "directory": "/home/voxi0/Desktop/MonoOS",
+    "file": "/home/voxi0/Desktop/MonoOS/3rdparty/tiny-printf/printf.c",
+    "output": "/home/voxi0/Desktop/MonoOS/build/printf.o"
   }
 ]
