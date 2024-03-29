@@ -9,27 +9,19 @@
 #include"drivers/include/video.h"
 
 // Set Limine Base Revision Version Number
-static volatile LIMINE_BASE_REVISION(1);
+static volatile LIMINE_BASE_REVISION(1)
 
 // Limine Requests
 static volatile struct limine_framebuffer_request fbRequest = {
 	.id = LIMINE_FRAMEBUFFER_REQUEST,
 	.revision = 0
 };
-static volatile struct limine_bootloader_info_request bootloaderInfoRequest = {
-	.id = LIMINE_BOOTLOADER_INFO_REQUEST,
-	.revision = 0
-};
-static volatile struct limine_memmap_request memoryMapRequest = {
-	.id = LIMINE_MEMMAP_REQUEST,
-	.revision = 0
-};
 
 // Disable System Interrupts and Halt System
 static void hang(void) {
-	asm("cli");
+	__asm__("cli");
 	for(;;) {
-		asm("hlt");
+		__asm__("hlt");
 	}
 }
 
@@ -54,18 +46,7 @@ void kmain(void) {
 	initGFX(framebuffer->address, framebuffer->width, framebuffer->height, framebuffer->pitch);
 	resetScr(rgbToHex(50, 100, 100));
 	setTextColor(rgbToHex(0, 255, 0));
-
-	// Print Bootloader Info
-	printf("Bootloader Info:\n");
-	printf("\tName: %s\n", bootloaderInfoRequest.response->name);
-	printf("\tVersion: %s\n", bootloaderInfoRequest.response->version);
-	printf("\tRevision: %lu\n\n", bootloaderInfoRequest.response->revision);
-
-	// Print Memory Map Info
-	printf("Memory Map Info:\n");
-	printf("\tEntry Count: %lu\n", memoryMapRequest.response->entry_count);
-	printf("\tRevision: %lu\n\n", memoryMapRequest.response->revision);
-
+	
 	// Print Framebuffer Info
 	printf("Framebuffer Info:\n");
 	printf("\tTotal Available: %lu\n", fbRequest.response->framebuffer_count);
