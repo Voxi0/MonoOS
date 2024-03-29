@@ -9,7 +9,7 @@
 struct gfxStruct gfxInfo;
 
 // Font
-extern uint8_t _binary_assets_fonts_unifont_sfn_start;
+extern char _binary_assets_fonts_unifont_sfn_start;
 
 // Convert RGB/RGBA to Hex Color Codes
 uint32_t rgbToHex(int red, int green, int blue) {
@@ -78,11 +78,24 @@ void _putchar(char character) {
 		// Newline
 		case '\n':
 			ssfn_dst.x = 0;
-			ssfn_dst.y += gfxInfo.glyphHeight;
+			if((++ssfn_dst.y + gfxInfo.glyphHeight) > (int)gfxInfo.fbHeight) {
+				ssfn_dst.y = 0;
+			} else {
+				ssfn_dst.y += gfxInfo.glyphHeight;
+			}
 			break;
 
 		// Tab
 		case '\t':
+			if((ssfn_dst.x + gfxInfo.glyphWidth) > (int)gfxInfo.fbWidth) {
+				ssfn_dst.x = 0;
+				if((ssfn_dst.y + gfxInfo.glyphHeight) > (int)gfxInfo.fbHeight) {
+					ssfn_dst.y = 0;
+				} else {
+					ssfn_dst.y += gfxInfo.glyphHeight;
+				}
+			}
+
 			for(uint8_t i = 0; i < 4; i++) {
 				ssfn_putc(' ');
 			}
@@ -90,6 +103,15 @@ void _putchar(char character) {
 
 		// Normal Character - Just Draw it
 		default:
+			if(++ssfn_dst.x > (int)gfxInfo.fbWidth) {
+				ssfn_dst.x = 0;
+				if((ssfn_dst.y + gfxInfo.glyphHeight) > (int)gfxInfo.fbHeight) {
+					ssfn_dst.y = 0;
+				} else {
+					ssfn_dst.y += gfxInfo.glyphHeight;
+				}
+			}
+
 			ssfn_putc(character);
 			break;
 	}
